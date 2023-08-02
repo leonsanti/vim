@@ -2,6 +2,8 @@ syntax on
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 filetype plugin indent on
+set autoindent expandtab tabstop=2 shiftwidth=2
+
 
 set swapfile
 set dir=~/.swap-files
@@ -9,7 +11,9 @@ set dir=~/.swap-files
 set guifont=ProggyCleanTT\ 12
 set backspace=2 " Allow backspacing
 
+" =======================
 " THEME COLOR
+" =======================
 colorscheme gruvbox
 
 set termguicolors
@@ -43,7 +47,16 @@ let g:fzf_colors =
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
 
-" Line numbers "
+"==========================
+"       PRETTIER
+"==========================
+let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+
+" =======================
+"        Line numbers "
+" =======================
 set number
 set relativenumber
 
@@ -51,15 +64,19 @@ set expandtab " Turn tab into spaces
 set showmatch " Show matching brackets
 set hlsearch " Highlight search
 
+" =======================
 " Enable highlight current line "
+" =======================
 
 set cursorline 
+set cursorcolumn
 :highlight Cursorline cterm=bold
 
-" Vertical align cursor "
+
+" Vertical align cursor
 " set scrolloff=999 
 
-let g:airline_theme='base16_gruvbox_light_hard'
+let g:airline_theme='kalisi'
 
 " CTRL-P SETTINGS "
 " let g:ctrlp_clear_cache_on_exit = 0
@@ -69,7 +86,9 @@ let g:airline_theme='base16_gruvbox_light_hard'
 " endif
 " END CTRL-P SETTINGS "
 
+" =======================
 " REMAPS
+" =======================
 nnoremap <C-n> :NnnExplorer<CR>
 nnoremap <C-n><C-n> :NnnExplorer %:p:h<CR>
 nnoremap <C-p> :Files<CR> 
@@ -85,6 +104,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " END REMAPS
 
+" =======================
+"       PLUGINS
+" =======================
 call vundle#begin()
  Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
  Plugin 'PhilRunninger/nerdtree-buffer-ops'
@@ -110,7 +132,15 @@ call vundle#begin()
  Plugin 'preservim/tagbar'
  "Themes
  " Plugin 'flazz/vim-colorschemes'
+ Plugin 'kaicataldo/material.vim', { 'branch': 'main' }
+ Plugin 'karoliskoncevicius/sacredforest-vim'
  Plugin 'dracula/vim', { 'name': 'dracula' }
+ Plugin 'lifepillar/vim-solarized8'
  Plugin 'mhartington/oceanic-next'
  Plugin 'jpo/vim-railscasts-theme'
+ " Js, Ts, React
+ Plugin 'pangloss/vim-javascript'
+ Plugin 'leafgarland/typescript-vim'
+ Plugin 'maxmellon/vim-jsx-pretty'
+ Plugin 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call vundle#end()
